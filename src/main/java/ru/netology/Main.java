@@ -15,6 +15,7 @@ public class Main {
         for (int i = 0; i < texts.length; i++) {
             texts[i] = generateText("aab", 30_000);
         }
+        long startTs = System.currentTimeMillis();
         for (String text : texts) {
             Callable<String> myCall = new Callable<String>() {
                 @Override
@@ -51,6 +52,9 @@ public class Main {
             }
             threadPool.shutdown();
         }
+        long endTs = System.currentTimeMillis(); // end time
+
+        System.out.println("Time: " + (endTs - startTs) + "ms");
 //        long startTs = System.currentTimeMillis(); // start time
 //        for (String text : texts) {
 //            int maxSize = 0;
