@@ -10,6 +10,7 @@ public class Main {
         for (int i = 0; i < texts.length; i++) {
             texts[i] = generateText("aab", 30_000);
         }
+        long startTs = System.currentTimeMillis();
         for (String text : texts) {
 
             Thread thread = new Thread(() -> {
@@ -40,6 +41,8 @@ public class Main {
         for (Thread thread : threads) {
             thread.join();
         }
+        long endTs = System.currentTimeMillis();
+        System.out.println("Time: " + (endTs - startTs) + "ms");
 //        long startTs = System.currentTimeMillis(); // start time
 //        for (String text : texts) {
 //            int maxSize = 0;
